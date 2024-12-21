@@ -22,3 +22,25 @@ export const createOrder = async (order: order) => {
     throw err;
   }
 };
+
+export const getOrdersOfUser = async (userId: number) => {
+  try {
+    const orders = await prisma.order.findMany({
+      select: {
+        fullName: true,
+        email: true,
+        address: true,
+        imagesUrl: true,
+        frameColor: true,
+      },
+      where: {
+        userId: {
+          equals: userId,
+        },
+      },
+    });
+    return orders;
+  } catch (err) {
+    throw err;
+  }
+};
