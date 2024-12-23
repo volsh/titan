@@ -11,7 +11,7 @@ router.post("/", (req: Request, res: Response) => {
 
 router.get("/orderOfUser", (req: Request, res: Response) => {
   if (!req.query?.userId || isNaN(req.query.userId as unknown as number)) {
-    res.status(404).send(new Error("bad request"));
+    res.status(400).send(new Error("bad request"));
   }
   const { userId } = req.query;
   getOrdersOfUser(parseInt(userId as string))

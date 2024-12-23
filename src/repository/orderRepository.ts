@@ -14,7 +14,7 @@ export const createOrder = async (order: order) => {
         address,
         imagesUrl,
         frameColor,
-        userId,
+        userId: parseInt(userId as unknown as string),
       },
     });
     return newOrder;
